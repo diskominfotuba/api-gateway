@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const serviceMap = {
-  "/api/notification": "process.env.NOTIFICATION_SERVICE_URL",
+  "/api/notification": process.env.NOTIFICATION_SERVICE_URL,
 };
 
 const proxyRequest = async (req, res) => {
