@@ -11,9 +11,14 @@ const proxyRequest = async (req, res) => {
       req.path.startsWith(prefix)
     );
 
+    console.log("Path", path);
+
     if (!path) return res.status(404).json({ message: "Service not found" });
 
     const targetURL = `${serviceMap[path]}${req.path}`;
+
+    console.log("Target url", targetURL);
+
     const response = await axios({
       method: req.method,
       url: targetURL,
