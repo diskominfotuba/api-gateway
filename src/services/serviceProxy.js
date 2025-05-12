@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const serviceMap = {
-  "/api/notification": process.env.NOTIFICATION_SERVICE_URL,
+  "/api/notification": "process.env.NOTIFICATION_SERVICE_URL",
 };
 
 const proxyRequest = async (req, res) => {
@@ -10,8 +10,7 @@ const proxyRequest = async (req, res) => {
       req.path.startsWith(prefix)
     );
 
-    if (!path)
-      return res.status(404).json({ message: "Service test not found" });
+    if (!path) return res.status(404).json({ message: "Service not found" });
 
     const targetURL = `${serviceMap[path]}${req.path.replace(path, "")}`;
     const response = await axios({
