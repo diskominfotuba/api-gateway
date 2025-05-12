@@ -1,5 +1,5 @@
-const express = require("express");
-const healthController = require("../controller/healthController");
+import express from "express";
+import healthController from "../controller/healthController.js";
 
 const publicRouter = new express.Router();
 publicRouter.get("/ping", healthController.ping);
