@@ -10,7 +10,7 @@ web.get("/ping", (req, res) => {
   res.status(200).send("pong");
 });
 
-// web.use(proxyRequest);
+web.use(proxyRequest);
 web.use(express.json());
 
 web.use(publicRouter);
