@@ -4,7 +4,7 @@
   "description": "Standar pengembangan nodejs Dinas Komunikasi dan Informatika Kabupaten Tulang Bawang",
   "main": "src/app.js",
   "scripts": {
-    "dev": "nodemon --env-file=.env ./src/app.js",
+    "dev": "nodemon ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dinas Komunikasi dan Informatika",
