@@ -1,0 +1,32 @@
+name: Deploy to Ubuntu Server
+
+on:
+  push:
+    branches:
+      - main # Ganti jika pakai branch lain
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p 7777 -H 192.168.11.2 >> ~/.ssh/known_hosts
+
+      - name: Deploy to Server
+        run: |
+          ssh k0minf0@192.168.11.2 -p 7777  << 'EOF'
+            cd /var/www//html/project/api-gateway
+            git pull origin main
+            # Jika butuh restart service:
+            # pm2 restart app-name
+            # atau
+            # docker-compose down && docker-compose up -d
+          EOF
