@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const serviceMap = {
-  "/ping": process.env.PING_SERVICE,
   "/api/notification": process.env.NOTIFICATION_SERVICE_URL,
 };
 

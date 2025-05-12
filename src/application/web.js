@@ -5,9 +5,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const web = express();
+
+web.get("/ping", (req, res) => {
+  res.status(200).send("pong");
+});
+
 web.use(proxyRequest);
 web.use(express.json());
-
-console.log("USER_SERVICE_URL:", process.env.USER_SERVICE_URL);
 
 web.use(publicRouter);
