@@ -1,4 +1,4 @@
-import axios from "axios";
+const axios = require("axios");
 
 const serviceMap = {
   "/api/notification": process.env.NOTIFICATION_SERVICE_URL,

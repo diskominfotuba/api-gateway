@@ -1,5 +1,5 @@
-import { web } from "./application/web.js";
-import { errorMiddleware } from "./middleware/error-middleware.js";
+const web = require("./application/web.js");
+const errorMiddleware = require("./middleware/error-middleware.js");
 
 web.listen(3000, () => {
   console.log("Server started on http://localhost:3000");

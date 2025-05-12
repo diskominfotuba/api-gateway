@@ -1,11 +1,14 @@
-import express from "express";
-import { publicRouter } from "../router/public-api.js";
-import proxyRequest from "../services/serviceProxy.js";
-import dotenv from "dotenv";
+const express = require("express");
+const { publicRouter } = require("../router/public-api.js");
+const proxyRequest = require("../services/serviceProxy.js");
+const dotenv = require("dotenv");
+
 dotenv.config();
 
-export const web = express();
+const web = express();
 web.use(proxyRequest);
 web.use(express.json());
 
 web.use(publicRouter);
+
+module.exports = { web };
