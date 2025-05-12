@@ -1,12 +1,13 @@
 import axios from "axios";
 
-const serviceMap = {
+const getServiceMap = () => ({
   "/api/notification": process.env.NOTIFICATION_SERVICE_URL,
   "/api/instagram": process.env.INSTAGRAM_URL,
-};
+});
 
 const proxyRequest = async (req, res) => {
   try {
+    const serviceMap = getServiceMap();
     const path = Object.keys(serviceMap).find((prefix) =>
       req.path.startsWith(prefix)
     );
