@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const web = express();
+web.use(publicRouter);
 web.use(proxyRequest);
 web.use(express.json());
-
-web.use(publicRouter);
